@@ -18,7 +18,7 @@ on you machine:
 
 To get the source of `ngx-dayjs` clone the git repository via:
 
-`git clone https://github.com/urish/ngx-dayjs`
+`git clone https://github.com/ljmerza/ngx-dayjs`
 
 This will clone the complete source to your local machine. Navigate to the project folder
 and install all needed dependencies via **npm**:

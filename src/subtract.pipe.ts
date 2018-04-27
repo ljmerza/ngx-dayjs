@@ -1,5 +1,3 @@
-/* ngx-dayjs (c) 2015, 2016 Uri Shaked / MIT Licence */
-
 import {Pipe, PipeTransform} from '@angular/core';
 import * as dayjs from 'dayjs';
 

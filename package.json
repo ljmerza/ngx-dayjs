@@ -18,7 +18,7 @@
     "angular",
     "daysjs"
   ],
-  "author": "Uri Shaked",
+  "author": "Leonardo Merza",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ljmerza/ngx-dayjs/issues"
