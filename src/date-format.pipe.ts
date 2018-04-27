@@ -1,14 +1,12 @@
-/* ngx-moment (c) 2015, 2016 Uri Shaked / MIT Licence */
-
 import {Pipe, PipeTransform} from '@angular/core';
-import * as moment from 'moment';
+import * as dayjs from 'dayjs';
 
-const momentConstructor = moment;
+const dayjsConstructor = dayjs;
 
 @Pipe({ name: 'amDateFormat' })
 export class DateFormatPipe implements PipeTransform {
-  transform(value: Date | moment.Moment | string | number, ...args: any[]): string {
+  transform(value: Date | dayjs.Dayjs | string | number, ...args: any[]): string {
     if (!value) { return ''; }
-    return momentConstructor(value).format(args[0]);
+    return dayjsConstructor(value).format(args[0]);
   }
 }

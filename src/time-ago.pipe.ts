@@ -1,16 +1,16 @@
-/* ngx-moment (c) 2015, 2016 Uri Shaked / MIT Licence */
+/* ngx-dayjs (c) 2015, 2016 Uri Shaked / MIT Licence */
 
 import {Pipe, ChangeDetectorRef, PipeTransform, OnDestroy, NgZone} from '@angular/core';
-import * as moment from 'moment';
+import * as dayjs from 'dayjs';
 
-const momentConstructor = moment;
+const dayjsConstructor = dayjs;
 
 @Pipe({name: 'amTimeAgo', pure: false})
 export class TimeAgoPipe implements PipeTransform, OnDestroy {
   private currentTimer: number;
 
   private lastTime: Number;
-  private lastValue: Date | moment.Moment;
+  private lastValue: Date | dayjs.Dayjs;
   private lastOmitSuffix: boolean;
   private lastLocale?: string;
   private lastText: string;
@@ -18,7 +18,7 @@ export class TimeAgoPipe implements PipeTransform, OnDestroy {
   constructor(private cdRef: ChangeDetectorRef, private ngZone: NgZone) {
   }
 
-  transform(value: Date | moment.Moment, omitSuffix?: boolean): string {
+  transform(value: Date | dayjs.Dayjs, omitSuffix?: boolean): string {
     if (this.hasChanged(value, omitSuffix)) {
       this.lastTime = this.getTime(value);
       this.lastValue = value;
@@ -26,7 +26,7 @@ export class TimeAgoPipe implements PipeTransform, OnDestroy {
       this.lastLocale = this.getLocale(value);
       this.removeTimer();
       this.createTimer();
-      this.lastText = momentConstructor(value).from(momentConstructor(), omitSuffix);
+      this.lastText = dayjsConstructor(value).from(dayjsConstructor(), omitSuffix);
 
     } else {
       this.createTimer();
@@ -44,13 +44,13 @@ export class TimeAgoPipe implements PipeTransform, OnDestroy {
     if (this.currentTimer) {
       return;
     }
-    const momentInstance = momentConstructor(this.lastValue);
+    const dayjsInstance = dayjsConstructor(this.lastValue);
 
-    const timeToUpdate = this.getSecondsUntilUpdate(momentInstance) * 1000;
+    const timeToUpdate = this.getSecondsUntilUpdate(dayjsInstance) * 1000;
     this.currentTimer = this.ngZone.runOutsideAngular(() => {
       if (typeof window !== 'undefined') {
         return window.setTimeout(() => {
-          this.lastText = momentConstructor(this.lastValue).from(momentConstructor(), this.lastOmitSuffix);
+          this.lastText = dayjsConstructor(this.lastValue).from(dayjsConstructor(), this.lastOmitSuffix);
 
           this.currentTimer = null;
           this.ngZone.run(() => this.cdRef.markForCheck());
@@ -67,8 +67,8 @@ export class TimeAgoPipe implements PipeTransform, OnDestroy {
     }
   }
 
-  private getSecondsUntilUpdate(momentInstance: moment.Moment) {
-    const howOld = Math.abs(momentConstructor().diff(momentInstance, 'minute'));
+  private getSecondsUntilUpdate(dayjsInstance: dayjs.dayjs) {
+    const howOld = Math.abs(dayjsConstructor().diff(dayjsInstance, 'minute'));
     if (howOld < 1) {
       return 1;
     } else if (howOld < 60) {
@@ -80,23 +80,23 @@ export class TimeAgoPipe implements PipeTransform, OnDestroy {
     }
   }
 
-  private hasChanged(value: Date | moment.Moment, omitSuffix?: boolean) {
+  private hasChanged(value: Date | dayjs.dayjs, omitSuffix?: boolean) {
     return this.getTime(value) !== this.lastTime
       || this.getLocale(value) !== this.lastLocale
       || omitSuffix !== this.lastOmitSuffix;
   }
 
-  private getTime(value: Date | moment.Moment) {
-    if (moment.isDate(value)) {
+  private getTime(value: Date | dayjs.dayjs) {
+    if (dayjs.isDate(value)) {
       return value.getTime();
-    } else if (moment.isMoment(value)) {
+    } else if (dayjs.isdayjs(value)) {
       return value.valueOf();
     } else {
-      return momentConstructor(value).valueOf();
+      return dayjsConstructor(value).valueOf();
     }
   }
 
-  private getLocale(value: Date | moment.Moment): string {
-    return moment.isMoment(value) ? value.locale() : null;
+  private getLocale(value: Date | dayjs.dayjs): string {
+    return dayjs.isdayjs(value) ? value.locale() : null;
   }
 }

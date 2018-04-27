@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import * as moment from 'moment';
+import * as dayjs from 'dayjs';
 
-// under systemjs, moment is actually exported as the default export, so we account for that
-const momentConstructor = moment;
+// under systemjs, dayjs is actually exported as the default export, so we account for that
+const dayjsConstructor = dayjs;
 
 @Pipe({ name: 'amLocale' })
 export class LocalePipe implements PipeTransform {
-  transform(value: string, locale: string): moment.Moment {
-    return momentConstructor(value).locale(locale);
+  transform(value: string, locale: string): dayjs.dayjs {
+    return dayjsConstructor(value).locale(locale);
   }
 }

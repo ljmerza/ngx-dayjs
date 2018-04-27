@@ -14,7 +14,7 @@ import { FromUtcPipe } from './from-utc.pipe';
 import { LocalTimePipe } from './local.pipe';
 import { LocalePipe } from './locale.pipe';
 
-const ANGULAR_MOMENT_PIPES = [
+const ANGULAR_DAYJS_PIPES = [
   AddPipe,
   CalendarPipe,
   DateFormatPipe,
@@ -31,7 +31,7 @@ const ANGULAR_MOMENT_PIPES = [
 ];
 
 @NgModule({
-  declarations: ANGULAR_MOMENT_PIPES,
-  exports: ANGULAR_MOMENT_PIPES
+  declarations: ANGULAR_DAYJS_PIPES,
+  exports: ANGULAR_DAYJS_PIPES
 })
-export class MomentModule { }
+export class DayjsModule { }

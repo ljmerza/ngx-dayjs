@@ -1,27 +1,27 @@
-# ngx-moment
+# ngx-dayjs
 
-moment.js pipes for Angular
+dayjs.js pipes for Angular
 
-[![Build Status](https://travis-ci.org/urish/ngx-moment.png?branch=master)](https://travis-ci.org/urish/ngx-moment)
+[![Build Status](https://travis-ci.org/ljmerza/ngx-dayjs.png?branch=master)](https://travis-ci.org/ljmerza/ngx-dayjs)
 
 This module works with Angular 5.0 and newer.
 
-For an Angular 2 / 4 version, please install [angular2-moment](https://npmjs.org/package/angular2-moment). For the AngularJS, please check out [angular-moment](https://github.com/urish/angular-moment).
+For an Angular 2 / 4 version, please install [angular2-dayjs](https://npmjs.org/package/angular2-dayjs). For the AngularJS, please check out [angular-dayjs](https://github.com/ljmerza/angular-dayjs).
 
 Installation
 ------------
 
-`npm install --save ngx-moment`
+`npm install --save ngx-dayjs`
 
-If you use typescript 1.8, and [typings](https://github.com/typings/typings), you may also need to install typings for moment.js:
+If you use typescript 1.8, and [typings](https://github.com/typings/typings), you may also need to install typings for dayjs.js:
 
-`typings install --save moment`
+`typings install --save dayjs`
 
 ### For System.js users:
 
-First you need to install moment:
+First you need to install dayjs:
 
-`npm install moment --save`
+`npm install dayjs --save`
 
 Don't forget to update your systemjs.config.js:
 
@@ -31,11 +31,11 @@ packages: {
                 main: './main.js',
                 defaultExtension: 'js'
             },
-            'moment': {
-                main: './moment.js',
+            'dayjs': {
+                main: './dayjs.js',
                 defaultExtension: 'js'
             },
-            'ngx-moment': {
+            'ngx-dayjs': {
                 main: './index.js',
                 defaultExtension: 'js'
             }
@@ -45,19 +45,19 @@ packages: {
 Usage
 -----
 
-Import `MomentModule` into your app's modules:
+Import `dayjsModule` into your app's modules:
 
 ``` typescript
-import { MomentModule } from 'ngx-moment';
+import { dayjsModule } from 'ngx-dayjs';
 
 @NgModule({
   imports: [
-    MomentModule
+    dayjsModule
   ]
 })
 ```
 
-This makes all the `ngx-moment` pipes available for use in your app components.
+This makes all the `ngx-dayjs` pipes available for use in your app components.
 
 Available pipes
 ---------------
@@ -90,7 +90,7 @@ Prints `Last updated: a few seconds`
 ## amCalendar pipe
 Takes optional `referenceTime` argument (defaults to now)
 and `formats` argument that could be output formats object or callback function.
-See [momentjs docs](http://momentjs.com/docs/#/displaying/calendar-time/) for details.
+See [dayjs docs](http://dayjs.com/docs/#/displaying/calendar-time/) for details.
 
 ``` typescript
 @Component({
@@ -148,7 +148,7 @@ Prints `Last updated: January 24, 2016`
 
 ## amParse pipe
 
-Parses a custom-formatted date into a moment object that can be used with the other pipes.
+Parses a custom-formatted date into a dayjs object that can be used with the other pipes.
 
 ``` typescript
 @Component({
@@ -231,7 +231,7 @@ Prints `Expiration: 1 day`
 
 ## amAdd and amSubtract pipes
 
-Use these pipes to perform date arithmetics. See [momentjs docs](http://momentjs.com/docs/#/manipulating/add/) for details.
+Use these pipes to perform date arithmetics. See [dayjsjs docs](http://dayjsjs.com/docs/#/manipulating/add/) for details.
 
 ``` typescript
 @Component({
@@ -255,7 +255,7 @@ Prints `Last updated: 2012-03-17 16:55`
 
 ## amFromUtc pipe
 
-Parses the date as UTC and enables mode for subsequent moment operations (such as displaying the time in UTC). This can be combined with `amLocal` to display a UTC date in local time.
+Parses the date as UTC and enables mode for subsequent dayjs operations (such as displaying the time in UTC). This can be combined with `amLocal` to display a UTC date in local time.
 
 ``` typescript
 @Component({
@@ -270,7 +270,7 @@ Prints `Last updated: 2017-01-01`
 
 ## amUtc pipe
 
-Enables UTC mode for subsequent moment operations (such as displaying the time in UTC).
+Enables UTC mode for subsequent dayjs operations (such as displaying the time in UTC).
 
 ``` typescript
 @Component({
@@ -290,7 +290,7 @@ Complete Example
 import { NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { MomentModule } from 'ngx-moment';
+import { dayjsModule } from 'ngx-dayjs';
 
 @Component({
   selector: 'app',
@@ -309,7 +309,7 @@ export class AppComponent {
 @NgModule({
   imports: [
     BrowserModule,
-    MomentModule
+    dayjsModule
   ],
   declarations: [ AppComponent ]
   bootstrap: [ AppComponent ]

@@ -1,11 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import * as moment from 'moment';
+import * as dayjs from 'dayjs';
 
-const momentConstructor = moment;
+const dayjsConstructor = dayjs;
 
 @Pipe({ name: 'amUtc' })
 export class UtcPipe implements PipeTransform {
-  transform(value: Date | moment.Moment | string | number): moment.Moment {
-    return momentConstructor(value).utc();
+  transform(value: Date | dayjs.Dayjs | string | number): dayjs.Dayjs {
+    return dayjsConstructor(value).utc();
   }
 }

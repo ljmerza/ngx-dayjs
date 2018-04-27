@@ -1,4 +1,4 @@
-import * as moment from 'moment';
+import * as dayjs from 'dayjs';
 import { SubtractPipe } from './subtract.pipe';
 
 describe('SubtractPipe', () => {
@@ -12,18 +12,18 @@ describe('SubtractPipe', () => {
     });
 
     it('should subtract two hours', () => {
-      const result = pipe.transform(moment('2016-01-24 15:00:00'), '2', 'hours');
-      expect(moment(result).format('YYYY-MM-DD HH:mm:ss')).toBe('2016-01-24 13:00:00');
+      const result = pipe.transform(dayjs('2016-01-24 15:00:00'), '2', 'hours');
+      expect(dayjs(result).format('YYYY-MM-DD HH:mm:ss')).toBe('2016-01-24 13:00:00');
     });
 
     it('should subtract two days', () => {
-      const result = pipe.transform(moment('2016-01-24 15:00:00'), '2', 'days');
-      expect(moment(result).format('YYYY-MM-DD HH:mm:ss')).toBe('2016-01-22 15:00:00');
+      const result = pipe.transform(dayjs('2016-01-24 15:00:00'), '2', 'days');
+      expect(dayjs(result).format('YYYY-MM-DD HH:mm:ss')).toBe('2016-01-22 15:00:00');
     });
 
     it('should subtract two years', () => {
-      const result = pipe.transform(moment('2016-01-24 15:00:00'), '2', 'years');
-      expect(moment(result).format('YYYY-MM-DD HH:mm:ss')).toBe('2014-01-24 15:00:00');
+      const result = pipe.transform(dayjs('2016-01-24 15:00:00'), '2', 'years');
+      expect(dayjs(result).format('YYYY-MM-DD HH:mm:ss')).toBe('2014-01-24 15:00:00');
     });
   });
 });

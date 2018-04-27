@@ -1,7 +1,5 @@
-/* ngx-moment (c) 2015, 2016 Uri Shaked / MIT Licence */
-
 import {Pipe, PipeTransform} from '@angular/core';
-import * as moment from 'moment';
+import * as dayjs from 'dayjs';
 
 @Pipe({ name: 'amFromUnix' })
 export class FromUnixPipe implements PipeTransform {
@@ -9,6 +7,6 @@ export class FromUnixPipe implements PipeTransform {
     if (typeof value === 'string') {
       value = +value;
     }
-    return moment.unix(value);
+    return dayjs.unix(value);
   }
 }

@@ -1,10 +1,8 @@
-/* ngx-moment (c) 2015, 2016 Uri Shaked / MIT Licence */
-
 import { Pipe, ChangeDetectorRef, PipeTransform, EventEmitter, OnDestroy, NgZone } from '@angular/core';
-import * as moment from 'moment';
+import * as dayjs from 'dayjs';
 import { Subscription } from 'rxjs';
 
-const momentConstructor = moment;
+const dayjsConstructor = dayjs;
 
 @Pipe({ name: 'amCalendar', pure: false })
 export class CalendarPipe implements PipeTransform, OnDestroy {
@@ -32,21 +30,21 @@ export class CalendarPipe implements PipeTransform, OnDestroy {
     });
   }
 
-  transform(value: Date | moment.Moment, ...args: any[]): any {
+  transform(value: Date | dayjs.Dayjs, ...args: any[]): any {
     let formats: any = null;
     let referenceTime: any = null;
 
     for (let i = 0, len = args.length; i < len; i++) {
       if (args[i] !== null) {
-        if (typeof args[i] === 'object' && !moment.isMoment(args[i])) {
+        if (typeof args[i] === 'object' && !dayjs.isValid(args[i])) {
           formats = args[i];
         } else {
-          referenceTime = momentConstructor(args[i]);
+          referenceTime = dayjsConstructor(args[i]);
         }
       }
     }
 
-    return momentConstructor(value).calendar(referenceTime, formats);
+    return dayjsConstructor(value).calendar(referenceTime, formats);
   }
 
   ngOnDestroy(): void {
@@ -90,8 +88,8 @@ export class CalendarPipe implements PipeTransform, OnDestroy {
   }
 
   private static _getMillisecondsUntilUpdate() {
-    const now = momentConstructor();
-    const tomorrow = momentConstructor().startOf('day').add(1, 'days');
+    const now = dayjsConstructor();
+    const tomorrow = dayjsConstructor().startOf('day').add(1, 'days');
     const timeToMidnight = tomorrow.valueOf() - now.valueOf();
     return timeToMidnight + 1000; // 1 second after midnight
   }

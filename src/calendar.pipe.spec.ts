@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import * as moment from 'moment';
+import * as dayjs from 'dayjs';
 import {NgZone} from '@angular/core';
 import {CalendarPipe} from './calendar.pipe';
 
@@ -16,12 +16,12 @@ describe('CalendarPipe', () => {
   describe('#transform', () => {
     const pipe = new CalendarPipe(null, new NgZoneMock() as NgZone);
     it('should transform the start of the current day to "Today at 12:00 AM"', () => {
-      expect(pipe.transform(moment().startOf('day'))).toBe('Today at 12:00 AM');
+      expect(pipe.transform(dayjs().startOf('day'))).toBe('Today at 12:00 AM');
     });
 
     it('should transform the start of the current day to "Yesterday at 12:00 AM"', () => {
-      const testDate = moment().startOf('day');
-      const referenceTime = moment().clone().add(1, 'day');
+      const testDate = dayjs().startOf('day');
+      const referenceTime = dayjs().clone().add(1, 'day');
       expect(pipe.transform(testDate, referenceTime)).toBe('Yesterday at 12:00 AM');
     });
 
@@ -32,8 +32,8 @@ describe('CalendarPipe', () => {
     });
 
     it('should support any order of arguments', () => {
-      const testDate = moment();
-      const referenceTime = moment().clone().add(1, 'day');
+      const testDate = dayjs();
+      const referenceTime = dayjs().clone().add(1, 'day');
       const formats = { lastDay: '[Last day at] h:mm A' };
       expect(pipe.transform(testDate, formats, referenceTime)).toBe(pipe.transform(testDate, referenceTime, formats));
     });

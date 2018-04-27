@@ -1,7 +1,7 @@
 {
-  "name": "ngx-moment",
-  "version": "2.0.0",
-  "description": "Moment.JS pipes for Angular (timeago and more)",
+  "name": "ngx-dayjs",
+  "version": "0.0.1",
+  "description": "dayjs pipes for Angular",
   "scripts": {
     "build": "ng build",
     "test": "ng lint && jest",
@@ -12,25 +12,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/urish/ngx-moment.git"
+    "url": "git+https://github.com/ljmerza/ngx-dayjs.git"
   },
   "keywords": [
     "angular",
-    "timeago",
-    "momentjs"
+    "daysjs"
   ],
   "author": "Uri Shaked",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/urish/ngx-moment/issues"
+    "url": "https://github.com/ljmerza/ngx-dayjs/issues"
   },
-  "homepage": "https://github.com/urish/ngx-moment#readme",
+  "homepage": "https://github.com/ljmerza/ngx-dayjs#readme",
   "peerDependencies": {
     "@angular/common": ">=2.0.0 <7.0.0",
     "@angular/core": ">=2.0.0 <7.0.0"
   },
   "dependencies": {
-    "moment": "^2.19.3"
+    "dayjs": "^1.5.15"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.5.0",

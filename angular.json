@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-moment": {
+    "ngx-dayjs": {
       "root": "",
       "projectType": "library",
       "architect": {

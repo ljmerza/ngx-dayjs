@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import * as moment from 'moment';
+import * as dayjs from 'dayjs';
 import { AddPipe } from './add.pipe';
 
 describe('AddPipe', () => {
@@ -13,18 +13,18 @@ describe('AddPipe', () => {
     });
 
     it('should add two hours', () => {
-      const result = pipe.transform(moment('2016-01-24 15:00:00'), '2', 'hours');
-      expect(moment(result).format('YYYY-MM-DD HH:mm:ss')).toBe('2016-01-24 17:00:00');
+      const result = pipe.transform(dayjs('2016-01-24 15:00:00'), '2', 'hours');
+      expect(dayjs(result).format('YYYY-MM-DD HH:mm:ss')).toBe('2016-01-24 17:00:00');
     });
 
     it('should add two days', () => {
-      const result = pipe.transform(moment('2016-01-24 15:00:00'), '2', 'days');
-      expect(moment(result).format('YYYY-MM-DD HH:mm:ss')).toBe('2016-01-26 15:00:00');
+      const result = pipe.transform(dayjs('2016-01-24 15:00:00'), '2', 'days');
+      expect(dayjs(result).format('YYYY-MM-DD HH:mm:ss')).toBe('2016-01-26 15:00:00');
     });
 
     it('should add two years', () => {
-      const result = pipe.transform(moment('2016-01-24 15:00:00'), '2', 'years');
-      expect(moment(result).format('YYYY-MM-DD HH:mm:ss')).toBe('2018-01-24 15:00:00');
+      const result = pipe.transform(dayjs('2016-01-24 15:00:00'), '2', 'years');
+      expect(dayjs(result).format('YYYY-MM-DD HH:mm:ss')).toBe('2018-01-24 15:00:00');
     });
   });
 });

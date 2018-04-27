@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import * as moment from 'moment';
+import * as dayjs from 'dayjs';
 
 @Pipe({ name: 'amDuration' })
 export class DurationPipe implements PipeTransform {
@@ -7,6 +7,6 @@ export class DurationPipe implements PipeTransform {
     if (typeof args === 'undefined' || args.length !== 1) {
       throw new Error('DurationPipe: missing required time unit argument');
     }
-    return moment.duration(value, args[0] as moment.unitOfTime.DurationConstructor).humanize();
+    return dayjs.duration(value, args[0] as dayjs.unitOfTime.DurationConstructor).humanize();
   }
 }

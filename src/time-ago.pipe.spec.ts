@@ -1,7 +1,7 @@
 import { NgZone } from '@angular/core';
 import { TimeAgoPipe } from './time-ago.pipe';
-import * as moment from 'moment';
-import 'moment/min/locales';
+import * as dayjs from 'dayjs';
+import 'dayjs/min/locales';
 
 declare var global: any;
 
@@ -57,23 +57,23 @@ describe('TimeAgoPipe', () => {
       fakeDate('2016-05-01');
       expect(pipe.transform(new Date())).toBe('a few seconds ago');
       expect(pipe.transform(new Date(0))).toBe('46 years ago');
-      expect(pipe.transform(moment())).toBe('a few seconds ago');
-      expect(pipe.transform(moment(0))).toBe('46 years ago');
+      expect(pipe.transform(dayjs())).toBe('a few seconds ago');
+      expect(pipe.transform(dayjs(0))).toBe('46 years ago');
     });
 
-    it('should update the text when moment locale changes', () => {
+    it('should update the text when dayjs locale changes', () => {
       const changeDetectorMock = { markForCheck: jest.fn() };
       const pipe = new TimeAgoPipe(changeDetectorMock as any, new NgZoneMock() as NgZone);
       fakeDate('2016-05-01');
-      expect(pipe.transform(moment(0))).toBe('46 years ago');
-      expect(pipe.transform(moment(0).locale('pl'))).toBe('46 lat temu');
+      expect(pipe.transform(dayjs(0))).toBe('46 years ago');
+      expect(pipe.transform(dayjs(0).locale('pl'))).toBe('46 lat temu');
     });
 
-    it('should reset language when localized moment changes to Date', () => {
+    it('should reset language when localized dayjs changes to Date', () => {
       const changeDetectorMock = { markForCheck: jest.fn() };
       const pipe = new TimeAgoPipe(changeDetectorMock as any, new NgZoneMock() as NgZone);
       fakeDate('2016-05-01');
-      expect(pipe.transform(moment(0).locale('pl'))).toBe('46 lat temu');
+      expect(pipe.transform(dayjs(0).locale('pl'))).toBe('46 lat temu');
       expect(pipe.transform(new Date(0))).toBe('46 years ago');
     });
 
@@ -86,10 +86,10 @@ describe('TimeAgoPipe', () => {
       date.setFullYear(2000);
       expect(pipe.transform(date)).toBe('16 years ago');
 
-      const dateAsMoment = moment();
-      expect(pipe.transform(dateAsMoment)).toBe('a few seconds ago');
-      dateAsMoment.year(2000);
-      expect(pipe.transform(dateAsMoment)).toBe('16 years ago');
+      const dateAsdayjs = dayjs();
+      expect(pipe.transform(dateAsdayjs)).toBe('a few seconds ago');
+      dateAsdayjs.year(2000);
+      expect(pipe.transform(dateAsdayjs)).toBe('16 years ago');
     });
 
     it('should remove all timers when destroyed', () => {
