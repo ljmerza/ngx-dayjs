@@ -2,16 +2,12 @@
 
 dayjs.js pipes for Angular
 
-[![Build Status](https://travis-ci.org/ljmerza/ngx-dayjs.png?branch=master)](https://travis-ci.org/ljmerza/ngx-dayjs)
+[![Build Status](https://travis-ci.org/ljmerza/ngx-dayjs.svg?branch=master)](https://travis-ci.org/ljmerza/ngx-dayjs)
 
 Installation
 ------------
 
 `npm install --save ngx-dayjs`
-
-If you use typescript 1.8, and [typings](https://github.com/typings/typings), you may also need to install typings for dayjs.js:
-
-`typings install --save dayjs`
 
 ### For System.js users:
 

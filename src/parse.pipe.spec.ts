@@ -1,6 +1,8 @@
-import * as moment from 'moment';
 import { DateFormatPipe } from './date-format.pipe';
 import { ParsePipe } from './parse.pipe';
+import * as dayjs from 'dayjs';
+
+const dayjsConstructor = dayjs;
 
 describe('ParsePipe', () => {
 
@@ -12,16 +14,15 @@ describe('ParsePipe', () => {
       parsePipe = new ParsePipe();
     });
 
-    it('should output a moment object for a string date', () => {
+    it('should output a dayjs object for a string date', () => {
       const dateString = '2015#09#13';
       const formatInputString = 'YYYY#MM#DD';
-      const parsedMoment = parsePipe.transform(dateString, formatInputString);
-      expect(parsedMoment).toEqual(expect.any(moment));
-      expect(parsedMoment.isValid()).toBe(true);
+      const parsedDayjs = dayjsConstructor(parsePipe.transform(dateString, formatInputString));
+      expect(parsedDayjs.isValid()).toBe(true);
 
-      expect(parsedMoment.year()).toBe(2015);
-      expect(parsedMoment.month()).toBe(8);
-      expect(parsedMoment.date()).toBe(13);
+      expect(parsedDayjs.year()).toBe(2015);
+      expect(parsedDayjs.month()).toBe(8);
+      expect(parsedDayjs.date()).toBe(13);
     });
 
     it('should be pipeable to amDateFormat', () => {

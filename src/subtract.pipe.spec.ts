@@ -22,7 +22,7 @@ describe('SubtractPipe', () => {
     });
 
     it('should subtract two years', () => {
-      const result = pipe.transform(dayjs('2016-01-24 15:00:00'), '2', 'years');
+      const result = pipe.transform(dayjs('2016-01-24 15:00:00'), 2, 'years');
       expect(dayjs(result).format('YYYY-MM-DD HH:mm:ss')).toBe('2014-01-24 15:00:00');
     });
   });

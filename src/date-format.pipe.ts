@@ -5,7 +5,7 @@ const dayjsConstructor = dayjs;
 
 @Pipe({ name: 'amDateFormat' })
 export class DateFormatPipe implements PipeTransform {
-  transform(value: Date | dayjs.Dayjs | string | number, ...args: any[]): string {
+  transform(value: any, ...args: any[]): string {
     if (!value) { return ''; }
     return dayjsConstructor(value).format(args[0]);
   }
