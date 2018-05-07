@@ -4,10 +4,6 @@ dayjs.js pipes for Angular
 
 [![Build Status](https://travis-ci.org/ljmerza/ngx-dayjs.png?branch=master)](https://travis-ci.org/ljmerza/ngx-dayjs)
 
-This module works with Angular 5.0 and newer.
-
-For an Angular 2 / 4 version, please install [angular2-dayjs](https://npmjs.org/package/angular2-dayjs). For the AngularJS, please check out [angular-dayjs](https://github.com/ljmerza/angular-dayjs).
-
 Installation
 ------------
 
