@@ -1,6 +1,6 @@
 {
   "name": "ngx-dayjs",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "dayjs pipes for Angular",
   "scripts": {
     "build": "ng build",
