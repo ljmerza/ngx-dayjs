@@ -1,11 +1,11 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import * as dayjs from 'dayjs';
-const dayjsConstructor = dayjs;
+import * as dayjs_ from 'dayjs';
+const dayjs = dayjs_;
 
 @Pipe({ name: 'amDateFormat' })
 export class DateFormatPipe implements PipeTransform {
   transform(value: any, ...args: any[]): string {
     if (!value) { return ''; }
-    return dayjsConstructor(value).format(args[0]);
+    return dayjs(value).format(args[0]);
   }
 }

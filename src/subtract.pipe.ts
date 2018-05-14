@@ -1,6 +1,6 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import * as dayjs from 'dayjs';
-const dayjsConstructor = dayjs;
+import * as dayjs_ from 'dayjs';
+const dayjs = dayjs_;
 
 @Pipe({ name: 'amSubtract' })
 export class SubtractPipe implements PipeTransform {
@@ -8,6 +8,6 @@ export class SubtractPipe implements PipeTransform {
         if (typeof amount === 'undefined' || (typeof amount === 'number' && typeof unit === 'undefined')) {
             throw new Error('SubtractPipe: missing required arguments');
         }
-        return dayjsConstructor(value).subtract(amount, unit);
+        return dayjs(value).subtract(amount, unit);
     }
 }

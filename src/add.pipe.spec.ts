@@ -1,7 +1,7 @@
 import 'reflect-metadata';
+import { AddPipe } from './add.pipe';
 import * as dayjs from 'dayjs';
 const dayjsConstructor = dayjs;
-import { AddPipe } from './add.pipe';
 
 describe('AddPipe', () => {
   let pipe: AddPipe;

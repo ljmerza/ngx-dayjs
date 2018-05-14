@@ -1,7 +1,7 @@
 import { DateFormatPipe } from './date-format.pipe';
 import { ParsePipe } from './parse.pipe';
-import * as dayjs from 'dayjs';
-const dayjsConstructor = dayjs;
+import * as dayjs_ from 'dayjs';
+const dayjs = dayjs_;
 
 describe('ParsePipe', () => {
 
@@ -16,7 +16,7 @@ describe('ParsePipe', () => {
     it('should output a dayjs object for a string date', () => {
       const dateString = '2015#09#13';
       const formatInputString = 'YYYY#MM#DD';
-      const parsedDayjs = dayjsConstructor(parsePipe.transform(dateString, formatInputString));
+      const parsedDayjs = dayjs(parsePipe.transform(dateString, formatInputString));
       expect(parsedDayjs.isValid()).toBe(true);
 
       expect(parsedDayjs.year()).toBe(2015);
