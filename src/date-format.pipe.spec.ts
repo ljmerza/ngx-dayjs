@@ -1,4 +1,3 @@
-import * as dayjs from 'dayjs';
 import {DateFormatPipe} from './date-format.pipe';
 
 describe('DateFormatPipe', () => {

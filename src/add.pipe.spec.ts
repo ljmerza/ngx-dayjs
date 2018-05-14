@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 import { AddPipe } from './add.pipe';
 
 describe('AddPipe', () => {
