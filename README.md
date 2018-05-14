@@ -1,6 +1,6 @@
 # ngx-dayjs
 
-dayjs.js pipes for Angular
+dayjs pipes for Angular
 
 [![Build Status](https://travis-ci.org/ljmerza/ngx-dayjs.svg?branch=master)](https://travis-ci.org/ljmerza/ngx-dayjs)
 
@@ -54,89 +54,18 @@ This makes all the `ngx-dayjs` pipes available for use in your app components.
 Available pipes
 ---------------
 
-## amTimeAgo pipe
-Takes an optional `omitSuffix` argument that defaults to `false`.
+## amFromUnix pipe
 
 ``` typescript
 @Component({
   selector: 'app',
   template: `
-    Last updated: {{myDate | amTimeAgo}}
+    Last updated: {{ (1456263980 | amFromUnix) | amDateFormat:'hh:mmA'}}
   `
 })
 ```
 
-Prints `Last updated: a few seconds ago`
-
-``` typescript
-@Component({
-  selector: 'app',
-  template: `
-    Last updated: {{myDate | amTimeAgo:true}}
-  `
-})
-```
-
-Prints `Last updated: a few seconds`
-
-## amCalendar pipe
-Takes optional `referenceTime` argument (defaults to now)
-and `formats` argument that could be output formats object or callback function.
-See [dayjs docs](http://dayjs.com/docs/#/displaying/calendar-time/) for details.
-
-``` typescript
-@Component({
-  selector: 'app',
-  template: `
-    Last updated: {{myDate | amCalendar}}
-  `
-})
-```
-
-Prints `Last updated: Today at 14:00` (default referenceTime is today by default)
-
-``` typescript
-@Component({
-  selector: 'app',
-  template: `
-    Last updated: <time>{{myDate | amCalendar:nextDay }}</time>
-  `
-})
-export class AppComponent {
-  nextDay: Date;
-
-  constructor() {
-      this.nextDay = new Date();
-      nextDay.setDate(nextDay.getDate() + 1);
-  }
-}
-```
-
-Prints `Last updated: Yesterday at 14:00` (referenceTime is tomorrow)
-
-``` typescript
-@Component({
-  selector: 'app',
-  template: `
-    Last updated: <time>{{myDate | amCalendar:{sameDay:'[Same Day at] h:mm A'} }}</time>
-  `
-})
-```
-
-Prints `Last updated: Same Day at 2:00 PM`
-
-## amDateFormat pipe
-
-``` typescript
-@Component({
-  selector: 'app',
-  template: `
-    Last updated: {{myDate | amDateFormat:'LL'}}
-  `
-})
-```
-
-Prints `Last updated: January 24, 2016`
+Prints `Last updated: 01:46PM`
 
 ## amParse pipe
 
@@ -152,62 +81,6 @@ Parses a custom-formatted date into a dayjs object that can be used with the oth
 ```
 
 Prints `Last updated: January 24, 2016`
-
-## amLocal pipe
-
-Converts UTC time to local time.
-
-``` typescript
-@Component({
-  selector: 'app',
-  template: `
-    Last updated: {{mydate | amLocal | amDateFormat: 'YYYY-MM-DD HH:mm'}}
-  `
-})
-```
-
-Prints `Last updated 2016-01-24 12:34`
-
-## amLocale pipe
-
-To be used with amDateFormat pipe in order to change locale.
-
-``` typescript
-@Component({
-  selector: 'app',
-  template: `
-    Last updated: {{'2016-01-24 14:23:45' | amLocale:'en' | amDateFormat:'MMMM Do YYYY, h:mm:ss a'}}
-  `
-})
-```
-
-Prints `Last updated: January 24th 2016, 2:23:45 pm`
-
-## amFromUnix pipe
-
-``` typescript
-@Component({
-  selector: 'app',
-  template: `
-    Last updated: {{ (1456263980 | amFromUnix) | amDateFormat:'hh:mmA'}}
-  `
-})
-```
-
-Prints `Last updated: 01:46PM`
-
-## amDuration pipe
-
-``` typescript
-@Component({
-  selector: 'app',
-  template: `
-    Uptime: {{ 365 | amDuration:'seconds' }}
-  `
-})
-```
-
-Prints `Uptime: 6 minutes`
 
 ## amDifference pipe
 
@@ -245,35 +118,6 @@ Prints `Expiration: 2017-03-17 18:55`
 ```
 Prints `Last updated: 2012-03-17 16:55`
 
-## amFromUtc pipe
-
-Parses the date as UTC and enables mode for subsequent dayjs operations (such as displaying the time in UTC). This can be combined with `amLocal` to display a UTC date in local time.
-
-``` typescript
-@Component({
-  selector: 'app',
-  template: `
-    Last updated: {{ '2016-12-31T23:00:00.000-01:00' | amFromUtc | amDateFormat: 'YYYY-MM-DD' }}
-  `
-})
-```
-
-Prints `Last updated: 2017-01-01`
-
-## amUtc pipe
-
-Enables UTC mode for subsequent dayjs operations (such as displaying the time in UTC).
-
-``` typescript
-@Component({
-  selector: 'app',
-  template: `
-    Last updated: {{ '2016-12-31T23:00:00.000-01:00' | amUtc | amDateFormat: 'YYYY-MM-DD' }}
-  `
-})
-```
-
-Prints `Last updated: 2017-01-01`
 
 Complete Example
 ----------------
@@ -287,7 +131,7 @@ import { dayjsModule } from 'ngx-dayjs';
 @Component({
   selector: 'app',
   template: `
-    Last updated: <b>{{myDate | amTimeAgo}}</b>, <b>{{myDate | amCalendar}}</b>, <b>{{myDate | amDateFormat:'LL'}}</b>
+    Last updated: <b>{{myDate | amSubtract:timeLeft}}</b>
   `
 })
 export class AppComponent {
@@ -310,8 +154,3 @@ class AppModule {}
 
 platformBrowserDynamic().bootstrapModule(AppModule);
 ```
-
-Demo
-----
-
-[See online demo on Plunker](http://plnkr.co/edit/ziBJ0mftSjnz0SrYPwbo?p=preview)
