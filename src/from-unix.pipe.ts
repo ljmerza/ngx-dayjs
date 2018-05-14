@@ -1,5 +1,6 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import dayjs from 'dayjs';
+import * as dayjs from 'dayjs';
+const dayjsConstructor = dayjs;
 
 @Pipe({ name: 'amFromUnix' })
 export class FromUnixPipe implements PipeTransform {
@@ -7,6 +8,6 @@ export class FromUnixPipe implements PipeTransform {
     if (typeof value === 'string') {
       value = +value;
     }
-    return dayjs(value).unix();
+    return dayjsConstructor(value).unix();
   }
 }

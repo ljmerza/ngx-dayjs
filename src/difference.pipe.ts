@@ -1,6 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import dayjs from 'dayjs';
-
+import * as dayjs from 'dayjs';
 const dayjsConstructor = dayjs;
 
 @Pipe({ name: 'amDifference' })

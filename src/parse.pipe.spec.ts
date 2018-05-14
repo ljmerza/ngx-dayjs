@@ -1,7 +1,6 @@
 import { DateFormatPipe } from './date-format.pipe';
 import { ParsePipe } from './parse.pipe';
-import dayjs from 'dayjs';
-
+import * as dayjs from 'dayjs';
 const dayjsConstructor = dayjs;
 
 describe('ParsePipe', () => {
