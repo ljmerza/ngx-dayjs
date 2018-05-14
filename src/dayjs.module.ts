@@ -8,16 +8,16 @@ import { ParsePipe } from './parse.pipe';
 import { SubtractPipe } from './subtract.pipe';
 
 const ANGULAR_DAYJS_PIPES = [
-	AddPipe,
-	DateFormatPipe,
-	DifferencePipe,
-	FromUnixPipe,
-	ParsePipe,
-	SubtractPipe,
+  AddPipe,
+  DateFormatPipe,
+  DifferencePipe,
+  FromUnixPipe,
+  ParsePipe,
+  SubtractPipe,
 ];
 
 @NgModule({
-	declarations: ANGULAR_DAYJS_PIPES,
-	exports: ANGULAR_DAYJS_PIPES
+  declarations: ANGULAR_DAYJS_PIPES,
+  exports: ANGULAR_DAYJS_PIPES
 })
 export class DayjsModule { }
